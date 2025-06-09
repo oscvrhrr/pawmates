@@ -26,7 +26,7 @@ const LoginPage = () => {
             muted
             loop
             playsInline
-            src="https://dm0qx8t0i9gc9.cloudfront.net/watermarks/video/rS5r4eB/1247333__21e27a404bed130be3b24e4831960020__P360.mp4"
+            src="https://dm0qx8t0i9gc9.cloudfront.net/watermarks/video/rC3rWV0BBk06c5omv/videoblocks-v1-0066_20231011-as-garelin-couple-at-home-2-studio00000000_rrowqn_8a__4e5ad1c92f509cd7baf51980ec3a70e7__P360.mp4"
             className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
           />
         </div>
