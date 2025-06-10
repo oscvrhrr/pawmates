@@ -5,8 +5,7 @@ This is the front-end part of a dog adoption application. Here is the [Live demo
 
 ## Objective
 The objective of this project was to integrate Fetch's API with a React frontend all written in TypeScript.
-User should be able to view a list of dogs available for adoption. Filter by breed, age, and have the query results paginated. I chose React, Vite, TypeScript because I wanted to make this a full client side app and focus on building a great user experience. I used TypeScript to prevent bugs and make my codebase easier to maintain and understand. For Design I used shadcn (the worlds best library!) to create a clean design system that can easily be customized and extended to my taste. State management was handled with native react hooks, context and reducers, although this might cause rerenders throughtout the tree. I figured the app was small enough to justify this approach.
-
+User should be able to view a list of dogs available for adoption. Filter by breed, age, and have the query results paginated. I chose React, Vite, TypeScript because I wanted to make this a full client side app and focus on building a great user experience. I used TypeScript to prevent bugs and make my codebase easier to maintain and understand. For Design I used shadcn (the worlds best library!) to create a clean design system that can easily be customized and extended to my taste. State management was handled with native react hooks, context and reducers, although this might cause rerenders throughtout the tree. I figured the app was small enough to justify this approach. Some things I would do differently would be to add Jest for unit testing.
 
 ### Features
 
