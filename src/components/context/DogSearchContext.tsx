@@ -7,8 +7,10 @@ import { capitalizeBreed } from "@/lib/utils";
 
 
 export interface IDogSearchContext {
-  sort: string
-  breed: string
+  sort: string,
+  breed: string,
+  ageMin: string,
+  ageMax: string,
   prev: string,
   next: string,
   resultIds: string[],
@@ -28,10 +30,12 @@ const DogSearchContextProvider = ({ children }: { children: React.ReactNode }) =
       try {
         const currentBreed = capitalizeBreed(state.breed);
         const breedQuery = currentBreed ? `breeds=${currentBreed}` : "";
+        const ageMinQuery = state.ageMin ? `ageMin=${state.ageMin}` : "";
+         const ageMaxQuery = state.ageMax? `ageMax=${state.ageMax}` : "";
         const response = await fetch(
           `${
             import.meta.env.VITE_API_URL
-          }/dogs/search?${breedQuery}&size=12&sort=breed:${state.sort}`,
+          }/dogs/search?${breedQuery}&${ageMinQuery}&${ageMaxQuery}&size=12&sort=breed:${state.sort}`,
           {
             method: "GET",
             credentials: "include",
@@ -66,7 +70,7 @@ const DogSearchContextProvider = ({ children }: { children: React.ReactNode }) =
     };
 
     apiCall();
-  }, [state.breed, state.sort]);
+  }, [state.breed, state.sort, state.ageMin, state.ageMax]);
 
   return (  
     <DogSearchContext.Provider value={{ ...state, dispatch }}>

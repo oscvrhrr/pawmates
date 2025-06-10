@@ -3,6 +3,8 @@ import type { IDogSearchContext } from "../context/DogSearchContext"
 export const initState = {
   sort: "asc",
   breed: "",
+  ageMin: "",
+  ageMax: "",
   prev: "",
   next: "",
   resultIds: [],
@@ -18,12 +20,12 @@ export type DogAction =
   | { type: "SET_PREV_PAGE", payload: IDogSearchContext }
   | { type: "FILTER_BREED", payload: string }
   | { type: "SORT", payload: string }
+  | { type: "FILTER_AGE", payload: { min: string, max: string } }
   // Add other action types as needed
 
 export const dogReducer = (state: IDogSearchContext, action: DogAction) => {
   switch (action.type) {
     case "SET_PAGE": 
-      // console.log(action.payload)
       return {
         ...state,
         prev: action.payload.prev === undefined ? "/dogs/search?size=15&sort=breed:asc": action.payload.prev,
@@ -55,12 +57,17 @@ export const dogReducer = (state: IDogSearchContext, action: DogAction) => {
         breed: action.payload
       }
     case "SORT":
-      console.log(action.payload)
       return {
         ...state,
         sort: action.payload
       }
-
+    case "FILTER_AGE": {
+     return { 
+      ...state,
+      ageMin: action.payload.min,
+      ageMax: action.payload.max
+     }
+    }
   }
 
 }
