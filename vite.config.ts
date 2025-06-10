@@ -1,10 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import tailwindcss from '@tailwindcss/vite'
-import { fileURLToPath } from 'node:url'
-import { dirname, resolve } from 'node:path'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 
 // https://vite.dev/config/
@@ -18,7 +18,7 @@ export default defineConfig({
   ],
     resolve: {
     alias: {
-      "@": resolve(__dirname, "./src"),
+      "@": path.resolve(__dirname, "./src"),
     },
   },
 })
