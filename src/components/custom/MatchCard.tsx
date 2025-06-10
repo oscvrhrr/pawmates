@@ -50,7 +50,7 @@ const MatchCard = ({ isMatched, setIsMatched, dog }: { dog: IDog, isMatched: boo
                   <h3 className="text-xl font-semibold text-gray-900">
                     {dog.name}
                   </h3>
-                  <Badge>{dog.age} years old</Badge>
+                  <Badge className="bg-orange-100 text-black">{dog.age} years old</Badge>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2 text-sm">
@@ -77,7 +77,7 @@ const MatchCard = ({ isMatched, setIsMatched, dog }: { dog: IDog, isMatched: boo
                 >
                   Close
                 </Button>
-                <Button>Contact Shelter</Button>
+                <Button className="bg-[#6B9080] hover:bg-[#A4C3B2]">Contact Shelter</Button>
               </div>
             </div>
         </DialogContent>

@@ -27,6 +27,7 @@ const SortingTabs = () => {
         <TabsTrigger
           onClick={() => dispatch({ type: "SORT", payload: "asc" })}
           value="asc"
+            className="data-[state=active]:bg-[#6B9080] data-[state=active]:text-white"
         >
           <ArrowUp />
           A-Z
@@ -34,6 +35,7 @@ const SortingTabs = () => {
         <TabsTrigger
           onClick={() => dispatch({ type: "SORT", payload: "desc" })}
           value="desc"
+            className="data-[state=active]:bg-[#6B9080] data-[state=active]:text-white"
         >
           <ArrowDown />
           Z-A

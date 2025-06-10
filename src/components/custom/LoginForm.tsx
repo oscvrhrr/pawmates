@@ -92,7 +92,7 @@ export function LoginForm({
             required
           />
         </div>
-        <Button onClick={login} type="submit" className="w-full">
+        <Button onClick={login} type="submit" className="w-full bg-[#6B9080] hover:bg-[#A4C3B2]">
           Login
         </Button>
         <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">

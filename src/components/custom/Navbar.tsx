@@ -86,11 +86,11 @@ const Navbar = () => {
             <Button variant="ghost" className="border mr-4" size="sm">
               <Heart
                 className={`h-4 w-4 ${
-                  favorites.length > 0 ? "fill-rose-500 text-rose-500" : ""
+                  favorites.length > 0 ? "fill-red-400 text-red-400" : ""
                 }`}
               />
               Favorites
-              <Badge variant="secondary">{favorites.length}</Badge>
+              <Badge variant="secondary" className="bg-orange-100">{favorites.length}</Badge>
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-[20rem] mx-11.5 md:mr-40 h-[350px]">
@@ -150,12 +150,12 @@ const Navbar = () => {
               </ScrollArea>
             </ul>
             {favorites.length < 1 ? (
-              <Button className="w-full" size="sm" disabled>
+              <Button className="w-full bg-[#6B9080]" size="sm" disabled>
                 <Sparkles className="h-4 w-4 mr-2" />
                 Generate your pawfect match
               </Button>
             ) : (
-              <Button className="w-full" size="sm" onClick={generateMatch}>
+              <Button className="w-full bg-[#6B9080] hover:bg-[#4D6A5E]" size="sm" onClick={generateMatch}>
                 <Sparkles className="h-4 w-4 mr-2" />
                 Generate your pawfect match
               </Button>
