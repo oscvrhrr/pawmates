@@ -49,7 +49,7 @@ const DogCard = ({ img, name, age, breed, zipcode, uid }: DogCardProps) => {
   }, [favorites, uid]);
 
   return (
-    <Card className="w-full max-w-xs py-0 pb-6">
+    <Card className="w-full  min-w-[200px] max-w-xs py-0 pb-6">
       <div className="aspect-video bg-gray-100 rounded-t-lg overflow-hidden">
         <img
           className="h-full w-full  object-cover dark:brightness-[0.2] dark:grayscale"
@@ -61,7 +61,7 @@ const DogCard = ({ img, name, age, breed, zipcode, uid }: DogCardProps) => {
       <CardHeader className="text-gray-700">
         <div className="flex justify-between">
           <CardTitle className="text-black">{name}</CardTitle>
-          <Badge variant="secondary" >{age} years old</Badge>
+          <Badge variant="secondary" className="bg-orange-100" >{age} years old</Badge>
         </div>
        
         <CardAction></CardAction>

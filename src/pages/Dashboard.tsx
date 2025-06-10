@@ -9,6 +9,8 @@ import { PaginationDemo } from "@/components/custom/Pagination";
 import SkeletonCard from "@/components/custom/SkeletonCard";
 import SortingTabs from "@/components/custom/SortingTabs";
 import { Toaster } from "@/components/ui/sonner";
+import { AgeDropdown } from "@/components/custom/AgeDropdown";
+
 
 
 const DashboardPage = () => {
@@ -31,8 +33,9 @@ const DashboardPage = () => {
         <section className="flex items-center sm:items-baseline flex-col  px-10 py-10 sm:py-0 ">
           <SortingTabs />
           <SearchCombobox breeds={formattedBreeds} />
+          <AgeDropdown/>
         </section>
-        <section className="place-items-center grid grid-cols-1 gap-8 sm:grid-rows-3 sm:grid-cols-3 px-10">
+        <section className="place-items-center grid grid-cols-1 gap-8 sm:grid-rows-3 sm:grid-cols-1 md:grid-rows-3 md:grid-cols-2 lg:grid-cols-3 px-10">
           {dogs.length > 0
             ? dogs.map((dog) => (
                 <DogCard
@@ -48,11 +51,11 @@ const DashboardPage = () => {
             : Array.from({ length: 24 }).map((_, index) => (
                 <SkeletonCard key={index} />
               ))}
-          <div className="sm:ml-65">
-            <PaginationDemo onPageChange={scrollToTop} />
-          </div>
         </section>
       </div>
+      <footer className="sm:ml-10 py-4">
+        <PaginationDemo onPageChange={scrollToTop} />
+      </footer>
       <Toaster />
     </div>
   );
