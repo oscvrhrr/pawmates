@@ -34,10 +34,15 @@ export function SearchCombobox({ breeds }: SearchComboboxProps) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
 
+  const allBreeds = [
+    { value: "", label: "All Breeds" },
+    ...breeds
+  ]
+
 
   return (
     <Popover open={open} onOpenChange={setOpen} >
-      <Label className="font-bold mb-2">
+      <Label className="font-bold mb-4">
         Filter by breed:
       </Label>
       <PopoverTrigger asChild>
@@ -48,8 +53,8 @@ export function SearchCombobox({ breeds }: SearchComboboxProps) {
           className="w-[300px] justify-between"
         >
           {value
-            ? breeds.find((breed) => breed.value === value)?.label
-            : "Search for breed..."}
+            ? allBreeds.find((breed) => breed.value === value)?.label
+            : "All Breeds"}
           <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -60,7 +65,7 @@ export function SearchCombobox({ breeds }: SearchComboboxProps) {
             <CommandEmpty>No framework found.</CommandEmpty>
             <CommandGroup>
               {/* OPTIMIZE THE RENDER ITS CAUSING PERFOMANCE ISSUES  */}
-              {breeds.map((breed) => (
+              {allBreeds.map((breed) => (
                 <CommandItem
                   key={breed.value}
                   value={breed.value}
