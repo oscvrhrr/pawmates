@@ -6,6 +6,7 @@ export const initState = {
   ageMin: "",
   ageMax: "",
   prev: "",
+  currentPage: 1,
   next: "",
   resultIds: [],
   total: 0,
@@ -32,7 +33,8 @@ export const dogReducer = (state: IDogSearchContext, action: DogAction) => {
         prev: action.payload.prev === undefined ? "/dogs/search?size=15&sort=breed:asc": action.payload.prev,
         next: action.payload.next,
         resultIds: action.payload.resultIds,
-        total: action.payload.total
+        total: action.payload.total,
+        currentPage: 1,
       }
     case "SET_DOGS":
       return {
@@ -45,6 +47,7 @@ export const dogReducer = (state: IDogSearchContext, action: DogAction) => {
         prev: action.payload.prev === undefined ? "/dogs/search?size=15&sort=breed:asc": action.payload.prev,
         next: action.payload.next,
         resultIds: action.payload.resultIds,
+        currentPage: state.currentPage + 1
       }
     case "SET_PREV_PAGE":
       return {
@@ -52,11 +55,12 @@ export const dogReducer = (state: IDogSearchContext, action: DogAction) => {
         prev: action.payload.prev === undefined ? "/dogs/search?size=15&sort=breed:asc": action.payload.prev,
         next: action.payload.next,
         resultIds: action.payload.resultIds,
+        currentPage: state.currentPage - 1
       }
     case "FILTER_BREED":
       return {
         ...state,
-        breed: action.payload
+        breed: action.payload,
       }
     case "SORT":
       return {

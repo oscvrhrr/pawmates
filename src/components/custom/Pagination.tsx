@@ -13,10 +13,9 @@ import useApi from "@/hooks/useApi";
 
 
 export function PaginationDemo({ onPageChange }: { onPageChange: () => void }) {
-  const { next, prev, dispatch, total } = useContext(DogSearchContext);
+  const { next, prev, dispatch, total, currentPage } = useContext(DogSearchContext);
   const { data: nextPageData } = useApi<IDogSearchContext>("GET", next);
   const { data: prevPageData } = useApi<IDogSearchContext>("GET", prev);
-  const [activePage, setActivePage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(0);
 
   const changeNextPage = async () => {
@@ -35,7 +34,6 @@ export function PaginationDemo({ onPageChange }: { onPageChange: () => void }) {
         const parsedData = await response.json();
         console.log(parsedData);
         dispatch({ type: "SET_DOGS", payload: parsedData });
-        setActivePage((prevState: number) => prevState + 1);
         onPageChange();
       }
     }
@@ -55,11 +53,7 @@ export function PaginationDemo({ onPageChange }: { onPageChange: () => void }) {
       });
       if (response.ok) {
         const parsedData = await response.json();
-        console.log(parsedData);
         dispatch({ type: "SET_DOGS", payload: parsedData });
-        setActivePage((prevState: number) =>
-          prevState >= 2 ? prevState - 1 : prevState
-        );
         onPageChange();
       }
     }
@@ -69,7 +63,6 @@ export function PaginationDemo({ onPageChange }: { onPageChange: () => void }) {
   useEffect(() => {
     const itemsPerPage = 12; 
     setTotalPages(Math.ceil(Number(total) / itemsPerPage));
-    console.log(total)
   }, [total]);
 
   const getPageNumbers = () => {
@@ -81,7 +74,7 @@ export function PaginationDemo({ onPageChange }: { onPageChange: () => void }) {
   }
 
   // If near the end, just show the last three pages
-  if (activePage >= totalPages - 2) {
+  if (currentPage >= totalPages - 2) {
     for (let i = totalPages - 2; i <= totalPages; i++) {
       if (i > 0) pages.push(i);
     }
@@ -89,7 +82,7 @@ export function PaginationDemo({ onPageChange }: { onPageChange: () => void }) {
   }
 
   // Otherwise, show current and next two, then ellipsis and last
-  for (let i = activePage; i < activePage + 3; i++) {
+  for (let i = currentPage; i < currentPage + 3; i++) {
     pages.push(i);
   }
   pages.push("...");
@@ -104,19 +97,19 @@ export function PaginationDemo({ onPageChange }: { onPageChange: () => void }) {
     <Pagination>
       <PaginationContent>
         <PaginationItem>
-          <PaginationPrevious className="cursor-pointer" onClick={ activePage === 1 ? () => {} :changePrevPage }  />
+          <PaginationPrevious className="cursor-pointer" onClick={ currentPage === 1 ? () => {} : changePrevPage }  />
         </PaginationItem>
        {getPageNumbers().map((page) => (
         <PaginationItem key={page}>
           <PaginationLink
-            isActive={page === activePage ? true : false}
+            isActive={page === currentPage ? true : false}
           >
             {page}
           </PaginationLink>
         </PaginationItem>
       ))}
         <PaginationItem >
-          <PaginationNext className="cursor-pointer" onClick={ activePage === totalPages ? () => {} :changeNextPage} />
+          <PaginationNext className="cursor-pointer" onClick={ currentPage === totalPages ? () => {} : changeNextPage} />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

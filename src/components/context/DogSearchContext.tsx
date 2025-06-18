@@ -12,6 +12,7 @@ export interface IDogSearchContext {
   ageMin: string,
   ageMax: string,
   prev: string,
+  currentPage: number,
   next: string,
   resultIds: string[],
   total: number,
