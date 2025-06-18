@@ -8,6 +8,7 @@ export const initState = {
   prev: "",
   next: "",
   resultIds: [],
+  total: 0,
   dogs: [],
   dispatch: () => {},
 }
@@ -30,7 +31,8 @@ export const dogReducer = (state: IDogSearchContext, action: DogAction) => {
         ...state,
         prev: action.payload.prev === undefined ? "/dogs/search?size=15&sort=breed:asc": action.payload.prev,
         next: action.payload.next,
-        resultIds: action.payload.resultIds
+        resultIds: action.payload.resultIds,
+        total: action.payload.total
       }
     case "SET_DOGS":
       return {

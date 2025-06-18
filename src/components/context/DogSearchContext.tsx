@@ -14,6 +14,7 @@ export interface IDogSearchContext {
   prev: string,
   next: string,
   resultIds: string[],
+  total: number,
   dogs: IDog[],
   dispatch: React.Dispatch<DogAction>,
 }
@@ -31,7 +32,7 @@ const DogSearchContextProvider = ({ children }: { children: React.ReactNode }) =
         const currentBreed = capitalizeBreed(state.breed);
         const breedQuery = currentBreed ? `breeds=${currentBreed}` : "";
         const ageMinQuery = state.ageMin ? `ageMin=${state.ageMin}` : "";
-         const ageMaxQuery = state.ageMax? `ageMax=${state.ageMax}` : "";
+        const ageMaxQuery = state.ageMax? `ageMax=${state.ageMax}` : "";
         const response = await fetch(
           `${
             import.meta.env.VITE_API_URL
